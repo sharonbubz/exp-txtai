@@ -5,6 +5,7 @@ import numpy as np
 import sys
 
 embeddings = Embeddings({'method': 'transformers', 'path': 'sentence-transformers/roberta-base-nli-stsb-mean-tokens'})
+embeddings = Embeddings({'method': 'transformers', 'path': 'sentence-transformers/bert-base-nli-stsb-mean-tokens'})
 
 input_file = sys.argv[1]
 mode = sys.argv[2]
@@ -22,6 +23,7 @@ for uid, text in enumerate(sections):
     doc_dict[uid] = text.split('\t')
     session_id, raw_text = doc_dict[uid][:2]
     if len(raw_text) > 250:
+        raw_text = Tokenizer.tokenize(raw_text)
         index_text.append((uid, raw_text, None))
 
 if mode == 'index':
