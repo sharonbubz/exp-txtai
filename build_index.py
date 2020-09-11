@@ -1,4 +1,6 @@
 from txtai.embeddings import Embeddings
+from txtai.tokenizer import Tokenizer
+
 import numpy as np
 import sys
 
@@ -29,7 +31,7 @@ if mode == 'index':
 elif mode == 'search':
     print("--searching-- %d documents" % (len(index_text)))
     embeddings.load(index_name)
-    for query in ("What is possible today", "My philosophy has always been don't solve the human", "story about Larry", "biological memory", "short-term memory", "memory blocks", "nothing to do with us"):
+    for query in ("the milestones for our seed round", "what is possible today", "My philosophy has always been don't solve the human", "story about Larry", "biological memory", "short-term memory", "memory blocks and memory stack", "the company where i programmed robots", "nothing to do with us"):
     # Extract uid of first result
     # search result format: (uid, score)
         print(query)
